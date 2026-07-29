@@ -1,4 +1,6 @@
-# Developing a Neural Network Classification Model
+# EXP-02 : Developing a Neural Network Classification Model
+### NAME : HARI PRIYA M
+### REG NO : 212224240047
 
 ## AIM
 To develop a neural network classification model for the given dataset.
@@ -11,7 +13,7 @@ In their existing market, the sales team has classified all customers into 4 seg
 You are required to help the manager to predict the right group of the new customers.
 
 ## Neural Network Model
-Include the neural network model diagram.
+<img width="700" height="450" alt="ChatGPT Image Jul 29, 2026, 03_54_05 PM" src="https://github.com/user-attachments/assets/088af943-fd87-416c-bfab-74791452a493" />
 
 ## DESIGN STEPS
 
@@ -39,34 +41,56 @@ STEP 6 : Evaluate the trained model using accuracy, confusion matrix, classifica
 class PeopleClassifier(nn.Module):
     def __init__(self, input_size):
         super(PeopleClassifier, self).__init__()
-        #Include your code here
+
+        self.fc1 = nn.Linear(input_size, 64)
+        self.fc2 = nn.Linear(64, 32)
+        self.fc3 = nn.Linear(32, 4)
 
 
 
     def forward(self, x):
-        #Include your code here
+      x = torch.relu(self.fc1(x))
+      x = torch.relu(self.fc2(x))
+      x = self.fc3(x)
+      return x
+
         
 # Initialize the Model, Loss Function, and Optimizer
 
 def train_model(model, train_loader, criterion, optimizer, epochs):
-    #Include your code here
+  model.train()
+
+  for epoch in range(epochs):
+    for X_batch, y_batch in train_loader:
+      optimizer.zero_grad()
+
+      outputs = model(X_batch)
+
+      loss = criterion(outputs, y_batch)
+
+      loss.backward()
+
+      optimizer.step()
+
+    if (epoch + 1) % 10 == 0:
+        print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
 
 ```
 
 ### Dataset Information
-Include screenshot of the dataset.
+<img width="800" height="391" alt="image" src="https://github.com/user-attachments/assets/c1c16f79-3486-4045-bb18-4bb5761891b1" />
 
 ### OUTPUT
 
-## Confusion Matrix
+## Confusion Matrix & Classification Report
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/69ca9872-381b-4e8c-82a5-792155c33b4d" />
+<br><br>
+<img width="600" height="370" alt="image" src="https://github.com/user-attachments/assets/4fb68715-1dea-49b9-991f-28f6dc0a6b18" />
 
-Include confusion matrix here
 
-## Classification Report
-Include classification report here
 
 ### New Sample Data Prediction
-Include your sample input and output here
+<img width="417" height="108" alt="image" src="https://github.com/user-attachments/assets/4b7133fb-eb42-46a7-abe6-a5ad7547e440" />
 
 ## RESULT
-Include your result here
+Thus, a neural network classification model was successfully developed, trained, and tested using PyTorch. The model was able to classify customers into the appropriate segments based on the given input features.
