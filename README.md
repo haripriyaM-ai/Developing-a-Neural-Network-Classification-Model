@@ -14,37 +14,26 @@ You are required to help the manager to predict the right group of the new custo
 Include the neural network model diagram.
 
 ## DESIGN STEPS
-### STEP 1: 
 
-Write your own steps
+STEP 1 : Load the customer segmentation dataset and preprocess the data by removing unnecessary columns and handling missing values.
 
-### STEP 2: 
+STEP 2 : Encode categorical features and convert the target classes into numerical labels.
 
+STEP 3 : Split the dataset into training and testing sets and normalize the feature values.
 
+STEP 4 : Build a neural network classification model using fully connected layers and ReLU activation functions.
 
-### STEP 3: 
+STEP 5 : Train the neural network using the Cross Entropy Loss function and Adam optimizer.
 
-
-
-### STEP 4: 
-
-
-
-### STEP 5: 
-
-
-
-### STEP 6: 
-
-
+STEP 6 : Evaluate the trained model using accuracy, confusion matrix, classification report, and predict the class of a new sample.
 
 
 
 ## PROGRAM
 
-### Name:
+### Name: Hari Priya M
 
-### Register Number:
+### Register Number: 212224240047
 
 ```python
 class PeopleClassifier(nn.Module):
